@@ -64,8 +64,30 @@ diseases_name <- c("Anterior_compartment_syndrome",
                    "pancreatitis",
                    "pneumonia")
 
+diseases <- c(Anterior_compartment_syndrome, Anterior_cruciate_ligament_injury, arthritis, cancer, Epilepsy, Listeriosis, pancreatitis, pneumonia)
+diseases <- data.frame(diseases)
+diseases <- transpose(diseases)
+diseases_name <- c("Anterior_compartment_syndrome", 
+                   "Anterior_cruciate_ligament_injury",
+                   "arthritis", 
+                   "cancer", 
+                   "Epilepsy", 
+                   "Listeriosis", 
+                   "pancreatitis",
+                   "pneumonia")
+
 diseases_name <- data.frame(diseases_name)
-diseases_final <- data.frame(row.names = diseases, diseases_name)
+diseases_final <- data.frame(diseases_name, diseases)
+
+barplot(t(as.matrix(diseases_final[2])),beside=TRUE, main = "Number of symptoms",
+        xlab = "Diseases", ylab = "Symptoms", names.arg = c("Anterior_compartment_syndrome", 
+                                                            "Anterior_cruciate_ligament_injury",
+                                                            "arthritis", 
+                                                            "cancer", 
+                                                            "Epilepsy", 
+                                                            "Listeriosis", 
+                                                            "pancreatitis",
+                                                            "pneumonia"))
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
